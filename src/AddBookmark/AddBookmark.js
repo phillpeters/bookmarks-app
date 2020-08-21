@@ -11,7 +11,7 @@ class AddBookmark extends Component {
   static contextType = BookmarksContext;
 
   state = {
-    error: null,
+    error: null
   };
 
   handleSubmit = e => {
