@@ -96,10 +96,14 @@ class EditBookmark extends React.Component {
           throw error;
         });
       }
+      if (res.status === 204) {
+        return '';
+      }
       return res.json();
     })
     .then(data => {
       this.context.updateBookmark(data);
+      this.props.history.push('/');
     })
     .catch(error => this.setState({ error }));
   }
@@ -115,6 +119,7 @@ class EditBookmark extends React.Component {
           onSubmit={this.handleSubmit}
         >
           <div className='EditBookmark__error' role='alert'>
+            {console.log(error)}
             {error && <p>{error.message}</p>}
           </div>
           <div>
